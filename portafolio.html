@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi trabajo | Mariana Vázquez Terán</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Header con menú de navegación -->
+  <header>
+    <nav class="navbar navbar-expand-md mi-menu">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="logo.png" alt="Logo de Mariana" class="logo-navbar" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+          aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="menuPrincipal">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item"><a class="nav-link" href="index.html#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#sobre-mi">Sobre mí</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#expertise">Expertise</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle mi-dropdown" href="#" id="dropdownPortafolio" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Mi portafolio
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="portafolio.html?archivo=estudio_de_caso.pdf">Estudio de caso</a></li>
+                <li><a class="dropdown-item" href="portafolio.html?archivo=historia_de_meso.pdf">Historia de
+                    Mesoamérica</a></li>
+                <li><a class="dropdown-item" href="portafolio.html?archivo=words_that_work.pdf">Words That Work</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+
+            <li class="nav-item redes d-flex align-items-center">
+              <a href="https://www.linkedin.com/in/marianavazquezteran" target="_blank" class="nav-link px-2">
+                <i class="fa-brands fa-linkedin-in fa-xl"></i>
+              </a>
+              <a href="https://github.com/Mariana8595" target="_blank" class="nav-link px-2">
+                <i class="fa-brands fa-github fa-xl"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenido principal: título, visualizador, resumen y botón -->
+  <main class="container py-5">
+    <!-- Título -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h2 id="titulo-pdf">Cargando...</h2>
+      </div>
+    </div>
+
+    <!-- Visualizador + resumen y botón -->
+    <div class="row">
+      <!-- Visualizador PDF -->
+      <div class="col-12 col-md-8 mb-4">
+        <div class="visor-contenedor" style="position: relative; width: 100%; height: 85vh; border: 2px solid #b9d5c6; border-radius: 8px; overflow: hidden;">
+          <embed id="visor" src="" type="application/pdf" width="100%" height="100%" />
+        </div>
+      </div>
+
+      <!-- Resumen + Botón juntos a la derecha -->
+      <div class="col-12 col-md-4 resumen-lateral d-flex flex-column justify-content-start align-items-start gap-2">
+        <p id="resumen" class="mb-2 texto-justificado">Esperando resumen...</p>
+        <a id="descargar" class="btn btn-custom" download target="_blank">Descargar PDF</a>
+      </div>
+      
+
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/portafolio.js"></script>
+</body>
+
+</html>

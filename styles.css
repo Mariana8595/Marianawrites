@@ -1,0 +1,588 @@
+@font-face {
+  font-family: 'Moderustic';
+  src: url('fonts/Moderustic.woff2') format('woff2'),
+    url('fonts/Moderustic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  scroll-padding-top: 50px;
+}
+
+@media (max-width: 900px) {
+  html {
+    scroll-padding-top: 40px;
+  }
+}
+
+/* ------------------------------
+   1. Reset general y cuerpo
+------------------------------ */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* ------------------------------
+   2. Header y navegación
+------------------------------ */
+header {
+  background-color: #fbeaea;
+  padding: 0.4rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #7b004c;
+  font-weight: bold;
+}
+
+/* Botón personalizado */
+.mi-dropdown {
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.mi-dropdown:hover,
+.mi-dropdown:focus {
+  background-color: #b03e6b;
+}
+
+/* Menú personalizado */
+.mi-menu {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fbeaea;
+  padding: 0.5rem 2rem;
+  border-radius: 12px;
+}
+
+.mi-menu .nav-link {
+  color: #7b004c !important;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.mi-menu .nav-link:hover,
+.mi-menu .nav-link:focus {
+  background-color: #fff6f8;
+  border-radius: 8px;
+}
+
+.mi-menu .nav-link.active {
+  background-color: #b03e6b !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+
+/* Dropdown del menú */
+.mi-menu .dropdown-menu {
+  background-color: #fff6f8;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+}
+
+.mi-menu .dropdown-menu a {
+  color: #7b004c;
+  padding: 0.6rem 1.2rem;
+  font-weight: normal;
+  transition: background-color 0.3s ease;
+}
+
+.mi-menu .dropdown-menu a:hover {
+  background-color: #fbeaea;
+  color: #b03e6b;
+  border-radius: 8px;
+}
+
+.logo-navbar {
+  height: 40px;       /* Altura controlada */
+  width: auto;        /* Ancho automático para mantener proporción */
+  max-height: 60px;   /* Altura máxima para pantallas grandes */
+  object-fit: contain;
+}
+
+
+/* ------------------------------
+   3. Secciones generales
+------------------------------ */
+section {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.seccion h2 {
+  color: #b03e6b;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.seccion p {
+  text-align: justify;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+/* ------------------------------
+   4. Presentación
+------------------------------ */
+.presentacion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff6f8;
+}
+
+.texto {
+  flex: 1 1 400px;
+  max-width: 600px;
+  padding: 1rem;
+  text-align: left;
+}
+
+.texto h1.presentacion-titulo {
+  font-family: "Moderustic", serif;
+  color: #d1a7b1;
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.boton-contacto {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #b03e6b;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.boton-contacto:hover {
+  background-color: #7b004c;
+  transform: translateY(-2px);
+}
+
+
+.texto h2 {
+  font-size: 1.2rem;
+  color: #b03e6b;
+}
+
+.saludo {
+  font-family: "Moderustic", serif;
+  color: #b75875;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.presentacion-titulo {
+  font-family: "Moderustic", serif;
+  color: #d1a7b1;
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.texto p {
+  margin-top: 1rem;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.foto {
+  flex: 1 1 300px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.foto img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #b9d5c6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/* ------------------------------
+   5. Expertise / Tarjetas
+------------------------------ */
+.tarjetas-expertise {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tarjeta {
+  flex: 0 1 calc(50% - 1rem);
+  max-width: 400px;
+  background-color: #fff6f8;
+  border: 2px solid #b9d5c6;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-8px);
+}
+
+.tarjeta img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.tarjeta h3 {
+  color: #b03e6b;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.tarjeta p {
+  text-align: justify;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive tarjetas */
+@media (max-width: 600px) {
+  .tarjeta {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* ------------------------------
+   6. Formulario
+------------------------------ */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+textarea {
+  padding: 0.75rem;
+  border: 2px solid #b9d5c6;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #b03e6b;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #7b004c;
+}
+
+/* ------------------------------
+   7. Animaciones generales
+------------------------------ */
+
+.fade-in-left,
+.fade-in-right,
+.fade-in-up {
+  opacity: 0;
+  transition: all 1.2s ease-out;
+}
+
+.fade-in-left {
+  transform: translateX(-80px);
+}
+
+.fade-in-right {
+  transform: translateX(80px);
+}
+
+.fade-in-up {
+  transform: translateY(60px);
+}
+
+/* Al hacerse visibles */
+.fade-in-left.fade-in-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right.fade-in-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-up.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------
+   8. Ajustes responsivos para menú
+------------------------------ */
+/* Pantallas medianas (iPads, tablets) */
+@media (min-width: 600px) and (max-width: 900px) {
+
+  header,
+  .mi-menu {
+    padding: 0.2rem 1rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .mi-menu .nav-link,
+  .mi-dropdown {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* Pantallas pequeñas (celulares) */
+@media (max-width: 600px) {
+  header {
+    padding: 0.3rem 1rem;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .mi-menu .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .mi-dropdown {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/*Portafolio.html*/
+/* Contenedor principal en dos columnas */
+.contenedor-pdf {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 3rem auto;
+  height: 80vh;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: #fff6f8;
+}
+
+/* Visualizador de PDF a la izquierda */
+.visor {
+  flex: 3;
+  height: 100%;
+  border: 2px solid #b9d5c6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Contenido lateral a la derecha */
+.contenido {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+/* Título */
+#titulo-pdf {
+  color: #b03e6b;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+/* Resumen con ancho controlado */
+.contenido p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 90%;
+  margin: 0;
+}
+
+/* Botón más corto y con margen */
+.btn-custom {
+  background-color: #b03e6b;
+  color: white !important;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  box-shadow: none !important;
+}
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active {
+  background-color: #7b004c;
+  color: white !important;
+  text-decoration: none;
+  box-shadow: none !important;
+  outline: none;
+}
+
+
+
+
+/*Responsive de portafolio*/
+
+@media (max-width: 768px) {
+  .contenedor-pdf {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    height: auto;
+    background-color: #fff6f8;
+  }
+
+  .titulo-pdf {
+    font-size: 1.6rem;
+    color: #7b004c;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    width: 100%;
+    padding-left: 0.2rem;
+  }
+
+  .visor {
+    width: 100vw;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    height: 90vh;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  #visor {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .contenido {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contenido p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-width: 95%;
+    text-align: justify;
+  }
+
+  .btn-descarga {
+    width: 70%;
+    max-width: 250px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* Estilos coherentes con tu paleta */
+.btn-custom {
+  background-color: #b03e6b;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #7b004c;
+  box-shadow: 0 6px 14px rgba(123, 0, 76, 0.3);
+}
+
+@media (min-width: 768px) {
+  .visor-contenedor {
+    margin-left: -1.2cm;
+    width: calc(100% + 1.2cm);
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .visor-contenedor {
+    margin-left: -0.5cm;
+    width: calc(100% + 0.5cm);
+  }
+}
+
+@media (min-width: 992px) {
+  .resumen-lateral {
+    margin-left: -0.9rem;
+  }
+}
+
+.resumen-lateral {
+  margin-left: -0.09rem;
+}
+
+.texto-justificado {
+  text-align: justify;
+  max-width: 95%;
+  line-height: 1.6;
+}
