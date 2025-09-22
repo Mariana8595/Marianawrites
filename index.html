@@ -4,31 +4,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portafolio | Mariana Vázquez Terán</title>
+    <title>Mariana Vázquez | UX Writer, Estrategia de Contenidos y Redacción</title>
 
-    <!-- Bootstrap CSS -->
+    <meta name="description"
+        content="Portafolio de Mariana Vázquez Terán, UX Writer y Content Strategist. Experta en redacción UX, redacción técnica, edición y proofreading en México.">
+    <meta name="keywords"
+        content="UX writer, UX writing, redacción, redacción UX, estratega de contenidos, technical writer, technical writing, redacción técnica, edición, proofreading, portafolio, México">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous">
 
-    <!-- Tus estilos personalizados -->
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/9da2247300.js" crossorigin="anonymous"></script>
 
-    <!-- Google Fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&family=Roboto+Slab:wght@100..900&display=swap');
     </style>
 
-    <!--logo-->
     <meta property="og:title" content="Portafolio de Mariana Vázquez Terán">
     <meta property="og:description" content="UX Writing | Investigación | Estrategia de contenidos">
     <meta property="og:image" content="https://marianawrites.netlify.app/logo.png">
     <meta property="og:url" content="https://marianawrites.netlify.app/">
     <meta property="og:type" content="website">
 
-    <!--EmailJS-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">
@@ -49,40 +48,36 @@
                     <img src="logo.png" alt="Logo de Mariana" class="logo-navbar" />
                 </a>
 
-
-                <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
                     aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Contenido del menú -->
-                <div class="collapse navbar-collapse justify-content-center" id="menuPrincipal">
+                <div class="collapse navbar-collapse justify-content-between" id="menuPrincipal">
                     <ul class="navbar-nav align-items-center">
-                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#inicio" data-translate="inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre-mi" data-translate="sobre_mi">Sobre mí</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#expertise"
+                                data-translate="expertise">Expertise</a></li>
 
-                        <!-- Dropdown funcional -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle mi-dropdown" href="#" id="dropdownPortafolio"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Mi portafolio
-                            </a>
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                data-translate="mi_portafolio">Mi portafolio</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="portafolio.html?archivo=estudio_de_caso.pdf">Estudio
-                                        de caso</a></li>
-                                <li><a class="dropdown-item"
-                                        href="portafolio.html?archivo=historia_de_meso.pdf">Historia de Mesoamérica</a>
-                                </li>
+                                <li><a class="dropdown-item" href="portafolio.html?archivo=estudio_de_caso.pdf"
+                                        data-translate="estudio_caso">Estudio de caso</a></li>
+                                <li><a class="dropdown-item" href="portafolio.html?archivo=historia_de_meso.pdf"
+                                        data-translate="historia_meso">Historia de Mesoamérica</a></li>
                                 <li><a class="dropdown-item" href="portafolio.html?archivo=words_that_work.pdf">Words
                                         That Work</a></li>
                             </ul>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto" data-translate="contacto">Contacto</a>
+                        </li>
 
-                        <!-- Íconos redes -->
                         <li class="nav-item redes d-flex align-items-center">
                             <a href="https://www.linkedin.com/in/marianavazquezteran" target="_blank"
                                 class="nav-link px-2">
@@ -90,6 +85,19 @@
                             </a>
                             <a href="https://github.com/Mariana8595" target="_blank" class="nav-link px-2">
                                 <i class="fa-brands fa-github fa-xl"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav d-flex flex-row lang-switcher">
+                        <li class="nav-item">
+                            <a href="#" id="lang-es" class="nav-link lang-btn" data-lang="es">
+                                🇲🇽 <span class="d-none d-md-inline">ESP</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" id="lang-en" class="nav-link lang-btn" data-lang="en">
+                                🇬🇧 <span class="d-none d-md-inline">ENG</span>
                             </a>
                         </li>
                     </ul>
@@ -102,20 +110,20 @@
     <!-- INICIO -->
     <section id="inicio" class="presentacion">
         <div class="texto fade-in-left">
-            <h3 class="saludo">Hola, soy Mariana</h3>
-            <h1 class="presentacion-titulo">
+            <h3 class="saludo" data-translate="saludo">Hola, soy Mariana</h3>
+            <h1 class="presentacion-titulo" data-translate="presentacion_titulo">
                 Profesional apasionada<br />
                 por transformar ideas<br />
                 complejas en historias<br />
                 claras y accesibles
             </h1>
 
-            <p>
+            <p data-translate="presentacion_parrafo">
                 Mi formación en humanidades y mi creciente interés por la investigación en UX me han llevado a
                 desarrollar contenido que combina análisis riguroso con empatía hacia los usuarios.
             </p>
 
-            <a href="#contacto" class="boton-contacto">Conversemos sobre tus ideas</a>
+            <a href="#contacto" class="boton-contacto" data-translate="boton_contacto">Conversemos sobre tus ideas</a>
 
         </div>
         <div class="foto fade-in-right">
@@ -125,8 +133,8 @@
 
     <!-- SOBRE MÍ -->
     <section id="sobre-mi" class="seccion fade-in-left">
-        <h2>Sobre mí</h2>
-        <p>
+        <h2 data-translate="sobre_mi_titulo">Sobre mí</h2>
+        <p data-translate="sobre_mi_parrafo1">
             Soy una profesional con experiencia en investigación y creación de contenido escrito. Actualmente estudio
             Ingeniería en Desarrollo de Software, donde estoy ampliando mis habilidades hacia el desarrollo tecnológico
             con enfoque en inteligencia artificial, SaaS y lingüística aplicada. Me interesa colaborar en proyectos que
@@ -134,7 +142,7 @@
             entre personas y tecnología, y estoy construyendo un perfil que combine pensamiento crítico, curiosidad y
             aprendizaje constante.
         </p>
-        <p>
+        <p data-translate="sobre_mi_parrafo2">
             Si compartes el interés por la comunicación clara, la tecnología y la empatía con las personas usuarias,
             estaré encantada de colaborar contigo. Puedes escribirme o visitar mi portafolio para conocer más.
         </p>
@@ -142,30 +150,34 @@
 
     <!-- EXPERTISE -->
     <section id="expertise" class="seccion fade-in-right">
-        <h2>Mi Expertise</h2>
+        <h2 data-translate="expertise_titulo">Mi Expertise</h2>
         <div class="tarjetas-expertise">
             <div class="tarjeta">
                 <i class="fa-regular fa-pen-to-square fa-xl" style="color: #d1a7b1;"></i>
-                <h3>Escribir</h3>
-                <p>Redacto textos claros, creativos y relevantes, ajustados a las necesidades del público y los
+                <h3 data-translate="escribir_titulo">Escribir</h3>
+                <p data-translate="escribir_parrafo">Redacto textos claros, creativos y relevantes, ajustados a las
+                    necesidades del público y los
                     objetivos del proyecto, ya sea en formato técnico, narrativo o reflexivo.</p>
             </div>
             <div class="tarjeta">
                 <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #d1a7b1;"></i>
-                <h3>Investigar</h3>
-                <p>Llevo a cabo investigaciones rigurosas para comprender a fondo los temas, reunir datos relevantes y
+                <h3 data-translate="investigar_titulo">Investigar</h3>
+                <p data-translate="investigar_parrafo">Llevo a cabo investigaciones rigurosas para comprender a fondo
+                    los temas, reunir datos relevantes y
                     descubrir perspectivas que enriquecen el contenido con precisión y profundidad.</p>
             </div>
             <div class="tarjeta">
                 <i class="fa-regular fa-lightbulb fa-xl" style="color: #d1a7b1;"></i>
-                <h3>Crear</h3>
-                <p>Transformo ideas complejas en mensajes accesibles y comprensibles, equilibrando exactitud técnica con
+                <h3 data-translate="crear_titulo">Crear</h3>
+                <p data-translate="crear_parrafo">Transformo ideas complejas en mensajes accesibles y comprensibles,
+                    equilibrando exactitud técnica con
                     fluidez para una lectura agradable.</p>
             </div>
             <div class="tarjeta">
                 <i class="fa-regular fa-comments fa-xl" style="color: #d1a7b1;"></i>
-                <h3>Comunicar</h3>
-                <p>Me enfoco en conectar con el lector mediante un estilo directo y envolvente, adaptando el tono y el
+                <h3 data-translate="comunicar_titulo">Comunicar</h3>
+                <p data-translate="comunicar_parrafo">Me enfoco en conectar con el lector mediante un estilo directo y
+                    envolvente, adaptando el tono y el
                     formato para que la información resulte interesante y significativa.</p>
             </div>
         </div>
@@ -173,20 +185,24 @@
 
     <!-- CONTACTO -->
     <section id="contacto" class="seccion fade-in-up">
-        <h2>Contacto</h2>
-        <p>¿Tienes un proyecto en mente o alguna duda? Envíame un mensaje y te responderé lo antes posible.</p>
+        <h2 data-translate="contacto_titulo">Contacto</h2>
+        <p data-translate="contacto_parrafo">¿Tienes un proyecto en mente o alguna duda? Envíame un mensaje y te
+            responderé lo antes posible.</p>
 
         <form id="contact-form">
-            <label for="nombre">Tu nombre completo</label>
-            <input type="text" id="nombre" name="nombre" required placeholder="John Doe" />
+            <label for="nombre" data-translate="label_nombre">Tu nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="John Doe"
+                data-translate-placeholder="placeholder_nombre" />
 
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com" />
+            <label for="email" data-translate="label_email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com"
+                data-translate-placeholder="placeholder_email" />
 
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="5" required placeholder="¿En qué puedo ayudarte?"></textarea>
+            <label for="mensaje" data-translate="label_mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required placeholder="¿En qué puedo ayudarte?"
+                data-translate-placeholder="placeholder_mensaje"></textarea>
 
-            <button type="submit">Enviar mensaje</button>
+            <button type="submit" data-translate="boton_enviar">Enviar mensaje</button>
         </form>
     </section>
 
