@@ -1,0 +1,19 @@
+{
+    "exposiciones": [
+      {
+        "titulo": "Eje Central: nuevas miradas al México antiguo",
+        "descripcion": "Una muestra que revisita piezas emblemáticas del museo bajo un enfoque renovado.",
+        "sala": "Sala de Exposiciones Temporales",
+        "vigencia": "2025",
+        "url": "https://www.mna.inah.gob.mx/exposiciones-temporales"
+      },
+      {
+        "titulo": "El lenguaje de la tierra",
+        "descripcion": "Exploración de la relación entre comunidades antiguas y los ciclos naturales.",
+        "sala": "Sala Sur",
+        "vigencia": "Hasta diciembre 2025",
+        "url": "https://www.mna.inah.gob.mx/exposiciones-temporales"
+      }
+    ]
+  }
+  

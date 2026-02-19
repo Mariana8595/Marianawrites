@@ -586,3 +586,146 @@ button:hover {
   max-width: 95%;
   line-height: 1.6;
 }
+
+
+/*chatbot*/
+/* =========================
+   TLALLI – SCOPE AISLADO
+   ========================= */
+
+   .tlalli-scope {
+    background: radial-gradient(circle at top, #06080f 0%, #02030a 70%);
+    padding: 4rem 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* CAPA DE BAHO GENERAL (pantalla) */
+  .tlalli-scope::before,
+  .tlalli-scope::after {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    left: -20%;
+    bottom: -40%;
+    background:
+      radial-gradient(
+        ellipse at center,
+        rgba(120, 200, 255, 0.18),
+        rgba(60, 120, 180, 0.12) 30%,
+        rgba(20, 40, 90, 0.08) 45%,
+        transparent 65%
+      );
+    filter: blur(70px);
+    animation: baho 18s linear infinite;
+    pointer-events: none;
+  }
+  
+  .tlalli-scope::after {
+    animation-duration: 26s;
+    animation-delay: -8s;
+    opacity: 0.7;
+  }
+  
+  /* Movimiento de baho */
+  @keyframes baho {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-12%) scale(1.15);
+      opacity: 0.35;
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.6;
+    }
+  }
+  
+  /* =========================
+     CONTENEDOR DEL CHAT
+     ========================= */
+  
+  .tlalli-scope #chat-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    border-radius: 22px;
+    background: rgba(10, 14, 28, 0.88);
+    backdrop-filter: blur(10px);
+    box-shadow:
+      0 0 60px rgba(90, 160, 255, 0.25),
+      inset 0 0 60px rgba(255, 255, 255, 0.04);
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* BAHO LOCAL (solo sobre el chat) */
+  .tlalli-scope #chat-container::before {
+    content: "";
+    position: absolute;
+    inset: -60%;
+    background:
+      radial-gradient(
+        ellipse at center,
+        rgba(180, 220, 255, 0.25),
+        rgba(90, 150, 220, 0.15) 30%,
+        transparent 60%
+      );
+    filter: blur(80px);
+    animation: baho-chat 14s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  @keyframes baho-chat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10%); }
+    100% { transform: translateY(0); }
+  }
+  
+  /* CONTENIDO ENCIMA */
+  .tlalli-scope #chat-container > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* =========================
+     TEXTO Y ELEMENTOS
+     ========================= */
+  
+  .tlalli-scope h2 {
+    font-family: "Moderustic", serif;
+    text-align: center;
+    color: #9ddcff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 12px rgba(120, 200, 255, 0.6);
+  }
+  
+  .tlalli-scope #messages {
+    height: 340px;
+    padding: 1rem;
+    border-radius: 14px;
+    background: rgba(5, 8, 18, 0.7);
+    overflow-y: auto;
+    color: #e9ecf3;
+  }
+  
+  /* Input */
+  .tlalli-scope #userInput {
+    background-color: rgba(5, 10, 25, 0.9);
+    color: #f5f7ff;
+    border: 1px solid rgba(140, 200, 255, 0.45);
+    border-radius: 12px;
+  }
+  
+  /* Botón */
+  .tlalli-scope #enviarBtn {
+    background: linear-gradient(135deg, #4aa3ff, #8fdcff);
+    color: #02030a;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+  
