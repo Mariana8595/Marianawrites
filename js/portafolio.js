@@ -25,7 +25,7 @@ const translations = {
 
 const resumenes_traducidos = {
   es: {
-    "estudio_de_caso.pdf": {
+    "estudio_de_caso_2.pdf": {
       titulo: "Estudio de caso",
       resumen: "En esta análisis crítico de la app del Museo Nacional de Antropología, identifico fallas clave en la navegación, la curaduría digital y la estructura del contenido que afectan la experiencia de los usuarios. A través de un proceso de evaluación contextual, propongo mejoras orientadas a la experiencia real de las personas que, desde su teléfono, buscan entender el pasado sin perderse en el presente."
     },
@@ -39,7 +39,7 @@ const resumenes_traducidos = {
     }
   },
   en: {
-      "estudio_de_caso.pdf": {
+      "estudio_de_caso_2.pdf": {
           titulo: "Case Study",
           resumen: "In this critical analysis of the National Museum of Anthropology's app, I identify key failures in navigation, digital curation, and content structure that affect the user experience. Through a contextual evaluation process, I propose improvements aimed at the real experience of people who, from their phone, seek to understand the past without getting lost in the present."
       },
