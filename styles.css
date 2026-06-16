@@ -117,9 +117,12 @@ nav a {
 }
 
 .logo-navbar {
-  height: 40px;       /* Altura controlada */
-  width: auto;        /* Ancho automático para mantener proporción */
-  max-height: 60px;   /* Altura máxima para pantallas grandes */
+  height: 40px;
+  /* Altura controlada */
+  width: auto;
+  /* Ancho automático para mantener proporción */
+  max-height: 60px;
+  /* Altura máxima para pantallas grandes */
   object-fit: contain;
 }
 
@@ -564,6 +567,7 @@ button:hover {
     width: calc(100% + 1.2cm);
   }
 }
+
 @media (min-width: 768px) and (max-width: 991.98px) {
   .visor-contenedor {
     margin-left: -0.5cm;
@@ -589,268 +593,376 @@ button:hover {
 
 
 /* ==========================================================================
-   TLALLI – SCOPE AISLADO: PALETA JADE Y OBSIDIANA (MÍSTICA)
+   TLALLI – SCOPE AISLADO: INTERFAZ LIMPIA Y UNIFICADA
    ========================================================================== */
 
-   .tlalli-scope {
-    /* Fondo general inspirado en piedra oscura */
-    background: radial-gradient(circle at top, #14181c 0%, #090b0d 70%);
-    padding: 4rem 1rem;
-    position: relative;
-    overflow: hidden;
-    font-family: sans-serif;
+.tlalli-scope {
+  background: radial-gradient(circle at top, #14181c 0%, #090b0d 70%);
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* Capa de niebla mística ambiental */
+.tlalli-scope::before,
+.tlalli-scope::after {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  left: -20%;
+  bottom: -40%;
+  background: radial-gradient(ellipse at center, rgba(13, 59, 62, 0.22), rgba(17, 184, 174, 0.08) 35%, transparent 65%);
+  filter: blur(70px);
+  animation: baho 18s linear infinite;
+  pointer-events: none;
+}
+
+.tlalli-scope::after {
+  animation-duration: 26s;
+  animation-delay: -8s;
+  opacity: 0.6;
+}
+
+@keyframes baho {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-12%) scale(1.15);
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+/* ==========================================================================
+   CONTENEDOR DEL CHAT
+   ========================================================================== */
+
+.tlalli-scope #chat-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: #0f1115;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(17, 184, 174, 0.25);
+  box-sizing: border-box;
+}
+
+/* ENCABEZADO UNIFICADO: Una sola declaración limpia elimina conflictos visuales */
+.tlalli-scope .chat-header {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  /* Altura ideal proporcional para tu imagen original */
+  background-color: #0D3B3E;
+  border-bottom: 1px solid rgba(17, 184, 174, 0.2);
+  box-sizing: border-box;
+}
+
+/* Mapeo exacto de tu archivo greca.jpg */
+.tlalli-scope .chat-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('greca.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  opacity: 0.7;
+  /* Filtro elegante que adapta el negro original de tu imagen al tono turquesa místico */
+  filter: invert(56%) sepia(85%) saturate(411%) hue-rotate(124deg) brightness(93%) contrast(89%);
+}
+
+.tlalli-scope #chat-container>* {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   ÁREA DE MENSAJES Y AVATARES
+   ========================================================================== */
+
+.tlalli-scope #messages {
+  height: 380px;
+  max-height: 50vh;
+  padding: 1.5rem 1.2rem;
+  background: rgba(11, 13, 16, 0.6);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-sizing: border-box;
+}
+
+/* Ocultar barra tosca de scroll */
+.tlalli-scope #messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tlalli-scope #messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tlalli-scope #messages::-webkit-scrollbar-thumb {
+  background: rgba(17, 184, 174, 0.3);
+  border-radius: 4px;
+}
+
+.tlalli-scope #messages {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(17, 184, 174, 0.3) transparent;
+}
+
+.tlalli-scope #messages>.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tlalli-scope .msg {
+  max-width: 72%;
+  padding: 0.8rem 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border-radius: 14px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+/* Tlaia (Usa tu imagen real del portafolio) */
+.tlalli-scope #messages>.message-row:has(.bot)::before {
+  content: "";
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-image: url('tlaia_isotipo_portfolio.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tlalli-scope .msg.bot {
+  background-color: #1c2026;
+  color: #F2EDE3;
+  border-bottom-left-radius: 2px;
+}
+
+/* Usuaria (Silueta de mujer) */
+.tlalli-scope #messages>.message-row:has(.user) {
+  justify-content: flex-end;
+}
+
+.tlalli-scope #messages>.message-row:has(.user)::after {
+  content: "";
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #11B8AE;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23F2EDE3"><circle cx="12" cy="7" r="4.5"/><path d="M12 13c-4 0-7.5 2.5-7.5 6v1h15v-1c0-3.5-3.5-6-7.5-6z"/></svg>');
+  background-size: 70% 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tlalli-scope .msg.user {
+  background-color: #11B8AE;
+  color: #0d1117;
+  border-bottom-right-radius: 2px;
+  font-weight: 500;
+}
+
+.tlalli-scope .msg a {
+  color: #7FD8D1;
+  text-decoration: underline;
+}
+
+.tlalli-scope .msg.user a {
+  color: #0d1117;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   ÁREA INFERIOR DE ENTRADA: ALINEACIÓN FIJA Y SEGURA
+   ========================================================================== */
+
+.tlalli-scope .chat-footer {
+  padding: 1rem 1.2rem;
+  background-color: #0F1115;
+  border-top: 1px solid rgba(17, 184, 174, 0.2);
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important; /* Prohíbe terminantemente que el botón se baje */
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Acortamos la caja de texto de forma estricta */
+.tlalli-scope #userInput {
+  width: 75% !important; /* Ocupa las tres cuartas partes del espacio */
+  flex: none !important;
+  background-color: #1c2026;
+  color: #F2EDE3;
+  border: 1px solid rgba(17, 184, 174, 0.35);
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.tlalli-scope #userInput:focus {
+  border-color: #11B8AE;
+}
+
+/* Le damos el espacio restante al botón para que luzca equilibrado */
+.tlalli-scope #enviarBtn {
+  width: 25% !important; /* Cuarta parte del espacio */
+  flex: none !important;
+  background-color: #11B8AE;
+  color: #0d1117;
+  border: none;
+  border-radius: 8px;
+  height: 38px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.tlalli-scope #enviarBtn:hover {
+  background-color: #0d968e;
+}
+
+/* ==========================================================================
+   PANTALLA DE BIENVENIDA FLOTANTE (CAPA SUPERPUESTA EXACTA)
+   ========================================================================== */
+
+/* Usamos una ruta ultra específica para neutralizar la regla del asterisco anterior */
+.tlalli-scope #chat-container .chat-welcome {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #0F1115 !important; /* Mismo fondo obsidiana para tapar todo el chat */
+  z-index: 50 !important; /* Se coloca por encima de la greca, mensajes y footer */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease; /* Desvanecimiento suave */
+}
+
+.tlalli-scope .welcome-content {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.tlalli-scope .welcome-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(17, 184, 174, 0.2);
+}
+
+.tlalli-scope .welcome-text {
+  color: #F2EDE3;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 280px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.tlalli-scope .welcome-btn {
+  background-color: #11B8AE;
+  color: #0d1117;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 2rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 12px rgba(17, 184, 174, 0.2);
+}
+
+.tlalli-scope .welcome-btn:hover {
+  background-color: #0d968e;
+}
+
+.tlalli-scope .welcome-btn:active {
+  transform: scale(0.98);
+}
+
+/* Al activarse la salida, se oculta por completo y permite interactuar con el chat */
+.tlalli-scope #chat-container .chat-welcome.fade-out {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ==========================================================================
+   ALINEACIÓN DEL TEXTO LATERAL DE TLAIA
+   ========================================================================== */
+   #titulo-tlaia {
+    color: #b03e6b;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
   
-  /* CAPA DE BAHO GENERAL (Efecto niebla mística de Jade) */
-  .tlalli-scope::before,
-  .tlalli-scope::after {
-    content: "";
-    position: absolute;
-    width: 140%;
-    height: 140%;
-    left: -20%;
-    bottom: -40%;
-    background:
-      radial-gradient(
-        ellipse at center,
-        rgba(30, 94, 86, 0.2),      /* Verde jadeita */
-        rgba(0, 128, 128, 0.12) 30%, /* Turquesa oscuro */
-        rgba(15, 17, 21, 0.08) 45%,
-        transparent 65%
-      );
-    filter: blur(70px);
-    animation: baho 18s linear infinite;
-    pointer-events: none;
-  }
-  
-  .tlalli-scope::after {
-    animation-duration: 26s;
-    animation-delay: -8s;
-    opacity: 0.7;
-  }
-  
-  @keyframes baho {
-    0% { transform: translateY(0) scale(1); opacity: 0.6; }
-    50% { transform: translateY(-12%) scale(1.15); opacity: 0.35; }
-    100% { transform: translateY(0) scale(1); opacity: 0.6; }
-  }
-  
-  /* ==========================================================================
-     CONTENEDOR DEL CHAT (Obsidiana Negra)
-     ========================================================================== */
-  
-  .tlalli-scope #chat-container {
-    width: 100%;
-    max-width: 480px; /* Tamaño ideal de ventana/widget de chat */
-    margin: 0 auto;
-    border-radius: 20px;
-    background: rgba(15, 17, 21, 0.95); /* Negro obsidiana profundo */
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 128, 128, 0.25); /* Borde jade sutil */
-    box-shadow:
-      0 15px 35px rgba(0, 0, 0, 0.5),
-      0 0 30px rgba(0, 168, 150, 0.15); /* Resplandor jade suave */
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
+  .contenido-tlaia {
+    color: #F2EDE3; /* Mantiene el tono claro para contrastar con el fondo místico */
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   
-  /* ENCABEZADO DEL CHAT (Boceto: Tlaia / Museo Nacional de Antropología) */
-  .tlalli-scope .chat-header {
-    background: #1e5e56; /* Bloque de color verde jade profundo */
-    padding: 1.2rem 1.5rem;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 2px solid rgba(0, 168, 150, 0.3);
+  .contenido-tlaia p {
+    margin-bottom: 1.2rem;
   }
   
-  .tlalli-scope .chat-header h2 {
-    font-family: "Moderustic", serif;
-    margin: 0;
-    font-size: 1.4rem;
-    color: #ffffff;
-    text-align: left;
-    text-shadow: none;
-    letter-spacing: 1px;
-  }
-  
-  .tlalli-scope .chat-header span {
-    font-size: 0.75rem;
-    opacity: 0.8;
-    display: block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  /* CONTENIDO ENCIMA */
-  .tlalli-scope #chat-container > * {
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* ==========================================================================
-     ÁREA DE MENSAJES Y BURBUJAS
-     ========================================================================== */
-  
-  .tlalli-scope #messages {
-    height: 400px;
-    max-height: 60vh; /* Se adapta a pantallas móviles cortas */
-    padding: 1.5rem 1.2rem;
-    background: rgba(11, 13, 16, 0.5); /* Interior oscuro pulido */
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Espaciado automático entre mensajes */
-  }
-  
-  /* Estilo Base de las Burbujas */
-  .tlalli-scope .msg {
-    max-width: 85%;
-    padding: 0.8rem 1.1rem;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    word-wrap: break-word;
-  }
-  
-  /* Burbuja de Tlaia (Bot) - Alineada a la izquierda */
-  .tlalli-scope .msg.bot {
-    align-self: flex-start;
-    background: #1c2026; /* Azul grisáceo muy oscuro */
-    color: #eae9e4;       /* Blanco estuco antiguo */
-    border-radius: 4px 16px 16px 16px;
-    border-left: 3px solid #00a896; /* Detalle turquesa */
-  }
-  
-  /* Burbuja del Usuario - Alineada a la derecha */
-  .tlalli-scope .msg.user {
-    align-self: flex-end;
-    background: #00a896; /* Turquesa encendido */
-    color: #0f1115;       /* Texto oscuro obsidiana para legibilidad */
-    border-radius: 16px 16px 4px 16px;
-    font-weight: 500;
-  }
-  
-  /* Enlaces dentro de las burbujas */
-  .tlalli-scope .msg a {
-    color: #00ffffff;
-    text-decoration: underline;
-    font-weight: 600;
-  }
-  .tlalli-scope .msg.user a {
-    color: #0f1115;
-  }
-  
-  /* ==========================================================================
-     BOTONES DE INTERACCIÓN RÁPIDA (OPCIONES RECOMENDADAS)
-     ========================================================================== */
-  
-  .tlalli-scope .options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 5px;
-    width: 100%;
-  }
-  
-  .tlalli-scope .opt-btn {
-    background: #1c2026;
-    color: #eae9e4;
-    border: 1px solid rgba(0, 168, 150, 0.4);
-    padding: 0.75rem 1rem;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .tlalli-scope .opt-btn:hover {
-    background: #1e5e56;
-    border-color: #00a896;
-    color: #ffffff;
-  }
-  
-  /* ==========================================================================
-     ÁREA DE ENTRADA DE TEXTO (INPUT)
-     ========================================================================== */
-  
-  .tlalli-scope .chat-footer {
-    padding: 1rem 1.2rem;
-    background: #0f1115;
-    border-top: 1px solid rgba(192, 192, 192, 0.08);
-    display: flex;
-    gap: 10px;
-  }
-  
-  .tlalli-scope #userInput {
-    flex: 1;
-    background-color: #1c2026;
-    color: #eae9e4;
-    border: 1px solid rgba(0, 168, 150, 0.3);
-    border-radius: 12px;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
-  
-  .tlalli-scope #userInput:focus {
-    border-color: #00a896; /* Brilla en turquesa al escribir */
-  }
-  
-  .tlalli-scope #userInput::placeholder {
-    color: #eae9e4;
-    opacity: 0.5;
-  }
-  
-  /* Botón Enviar */
-  .tlalli-scope #enviarBtn {
-    background: #00a896;
-    color: #0f1115;
-    font-weight: 600;
-    border: none;
-    border-radius: 12px; /* Mismo redondeado que el input */
-    padding: 0 1.2rem;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  
-  .tlalli-scope #enviarBtn:hover {
-    background: #00c4af;
-  }
-  
-  /* ==========================================================================
-     AJUSTES RESPONSIVOS (MEDIA QUERIES)
-     ========================================================================== */
-  
-  @media (max-width: 576px) {
-    .tlalli-scope {
-      padding: 1rem 0.5rem; /* Menor espacio exterior en móviles */
-    }
-  
-    .tlalli-scope #chat-container {
-      max-width: 100%;
-      border-radius: 14px; /* Esquinas un poco más suaves en pantallas chicas */
-    }
-  
-    .tlalli-scope .chat-header {
-      padding: 1rem;
-    }
-  
-    .tlalli-scope #messages {
-      height: 70vh; /* Maximiza el espacio de lectura en celulares */
-      padding: 1rem 0.8rem;
-    }
-  
-    .tlalli-scope .msg {
-      max-width: 90%; /* Las burbujas pueden ser más anchas en móviles */
+  /* En pantallas móviles, le damos un respiro al texto respecto al chat */
+  @media (max-width: 768px) {
+    .contenido-tlaia {
+      padding: 0 1rem;
+      align-items: flex-start;
     }
   }

@@ -12,6 +12,11 @@
   <meta name="keywords"
     content="UX writer, UX writing, redacción, redacción UX, estratega de contenidos, technical writer, technical writing, redacción técnica, edición, proofreading, portafolio, México">
 
+  <!-- ==========================================================================
+       FAVICON (Aquí se insertó la voluta de Tlaia)
+       ========================================================================== */ -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
     crossorigin="anonymous">
 
@@ -64,7 +69,7 @@
               <a class="nav-link dropdown-toggle mi-dropdown" href="#" id="dropdownPortafolio" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false" data-translate="mi_portafolio">Mi portafolio</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="portafolio.html?archivo=estudio_de_caso.pdf"
+                <li><a class="dropdown-item" href="portafolio.html?archivo=estudio_de_caso_2.pdf"
                     data-translate="estudio_caso">Estudio de caso</a></li>
                 <li><a class="dropdown-item" href="portafolio.html?archivo=historia_de_meso.pdf"
                     data-translate="historia_meso">Historia de Mesoamérica</a></li>
@@ -104,22 +109,59 @@
 
 
   <div class="tlalli-scope">
+    <div class="container">
+      <div class="row align-items-center gap-md-0 gap-4">
 
-    <div id="chat-container">
-      <h2>Chatbot Tlaia</h2>
+        <div class="col-12 col-md-7">
+          <div id="chat-container">
 
-      <div id="messages"></div>
+            <div id="chat-welcome" class="chat-welcome">
+              <div class="welcome-content">
+                <img src="tlaia_isotipo_portfolio.png" alt="Logo Tlaia" class="welcome-logo">
+                <p class="welcome-text">Tu guía personalizada en el Museo Nacional de Antropología.</p>
+                <button class="welcome-btn" onclick="iniciarChat()">Iniciar visita</button>
+              </div>
+            </div>
 
-      <div id="input-area">
-        <input type="text" id="userInput" placeholder="Escribe tu pregunta...">
-        <button id="enviarBtn">Enviar</button>
+            <div class="chat-header"></div>
+            <div id="messages"></div>
+
+            <div class="chat-footer">
+              <input type="text" id="userInput" placeholder="Escribe tu pregunta...">
+              <button id="enviarBtn" onclick="enviar()">Enviar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-5 contenido-tlaia">
+          <h2 id="titulo-tlaia" data-translate="tlaia_titulo">Tlaia: Asistente Conversacional</h2>
+          <p class="texto-justificado" data-translate="tlaia_parrafo1">
+            Como propuesta de solución derivada del estudio de caso de la app del MNA, diseñé a <strong>Tlaia</strong>:
+            un chatbot enfocado en guiar la experiencia del usuario desde su llegada al museo.
+          </p>
+          <p class="texto-justificado" data-translate="tlaia_parrafo2">
+            A través de una arquitectura de información simplificada y un tono cercano, este asistente resuelve dudas de
+            accesibilidad, servicios logísticos y propone recorridos personalizados según el tiempo disponible de las
+            personas, mitigando la sobrecarga cognitiva identificada en la investigación.
+          </p>
+          <p class="texto-justificado" data-translate="tlaia_idioma_nota">
+            *Nota: Por el momento, la demo de este asistente interactivo se encuentra disponible únicamente en español.
+          </p>
+          <a class="btn-custom mt-3" href="portafolio.html?archivo=estudio_de_caso_2.pdf"
+            data-translate="tlaia_boton">Ver
+            estudio de caso completo</a>
+        </div>
       </div>
     </div>
 
-  </div>
+    <!-- Librería de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="tlalli.js"></script>
+    <!-- Archivo de traducciones  -->
+    <script src="script.js"></script>
+
+    <!-- Lógica del chatbot -->
+    <script src="tlalli.js"></script>
 </body>
 
 </html>

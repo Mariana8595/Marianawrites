@@ -6,19 +6,31 @@ function enviar() {
     const texto = input.value.trim().toLowerCase();
     if (!texto) return;
 
-    mostrarMensaje(input.value, "user"); 
-    input.value = ""; 
+    mostrarMensaje(input.value, "user");
+    input.value = "";
 
     const respuesta = obtenerRespuesta(texto);
     setTimeout(() => mostrarMensaje(respuesta, "bot"), 200);
 }
 
+// --- ESTA ES LA FUNCIÓN MODIFICADA CON EL CONTENEDOR PARA LOS AVATARES ---
 function mostrarMensaje(texto, tipo) {
-    const div = document.createElement("div");
-    div.classList.add("msg", tipo);
-    div.innerHTML = texto;
-    document.getElementById("messages").appendChild(div);
+    // 1. Creamos el contenedor exterior para el empaquetado del avatar y la burbuja
+    const contenedorMensaje = document.createElement("div");
+    contenedorMensaje.classList.add("message-row");
 
+    // 2. Creamos la burbuja de texto interna con sus clases correspondientes
+    const divBurbuja = document.createElement("div");
+    divBurbuja.classList.add("msg", tipo);
+    divBurbuja.innerHTML = texto;
+
+    // 3. Metemos la burbuja dentro del contenedor exterior
+    contenedorMensaje.appendChild(divBurbuja);
+
+    // 4. Añadimos todo el bloque al área de mensajes de la pantalla
+    document.getElementById("messages").appendChild(contenedorMensaje);
+
+    // 5. Ajustamos el scroll automático para enfocar el último texto
     const cont = document.getElementById("messages");
     cont.scrollTop = cont.scrollHeight;
 }
@@ -35,10 +47,16 @@ function obtenerRespuesta(texto) {
     const quiereSaberComoLlegar = texto.includes("cómo llegar") || texto.includes("como llegar") || texto.includes("donde esta") || texto.includes("dónde está") || texto.includes("ubicación") || texto.includes("ubicacion");
     const esPrimeraVez = texto.includes("primera vez") || texto.includes("no conozco") || texto.includes("primer vez");
 
-    // 1. SALUDOS (Prioridad alta para interacciones iniciales)
-    const saludos = ["hola", "buenas", "qué tal", "que tal", "ola", "hi"];
+    // 1. SALUDOS (Actualizado con variantes informales y multiculturales)
+    const saludos = [
+        "hola", "buenas", "qué tal", "que tal", "ola", "oli", "hi",
+        "que onda", "qué onda", "holi", "holi crayoli",
+        "hello", "hello!", "bonjour", "bonjour!", "que pedo", "qué pedo"
+    ];
+
+    // Validamos coincidencia exacta o si la frase contiene el saludo de forma aislada
     if (saludos.some(s => texto === s || texto.startsWith(s + " ") || texto.endsWith(" " + s) || texto.includes(" " + s + " "))) {
-        contextoConversacion = ""; 
+        contextoConversacion = "";
         return "¡Hola, soy Tlaia! Tu guía personalizado.<br>¿Es tu primera vez en el MNA o buscas algo específico?";
     }
 
@@ -63,7 +81,7 @@ function obtenerRespuesta(texto) {
 
     if (contextoConversacion === "tiempo_recorrido") {
         if (texto.includes("una") || texto.includes("1") || texto.includes("poco")) {
-            contextoConversacion = "fin_recorrido"; // Avanzamos al estado de confirmación
+            contextoConversacion = "fin_recorrido";
             return "Te recomiendo comenzar por las salas más representativas. Desde la entrada principal, avanza hacia el patio central, donde está el paraguas. Rodea por la derecha para ir a la Sala 2: Poblamiento de América.<br>¿Te gustaría saber algo más o prefieres iniciar tu visita?";
         }
         if (texto.includes("dos") || texto.includes("2") || texto.includes("algo")) {
@@ -76,7 +94,6 @@ function obtenerRespuesta(texto) {
         }
     }
 
-    // Cierre del flujo de recorrido (Evita el error con "ok" o "salir")
     if (contextoConversacion === "fin_recorrido") {
         if (diceOk || diceSi) {
             contextoConversacion = "";
@@ -90,23 +107,23 @@ function obtenerRespuesta(texto) {
 
     // 5. MANEJO DE CONTEXTO: PIEDRA DEL SOL (ESTADOS SECUENCIALES)
     if (quiereMasInfo && contextoConversacion === "piedra_del_sol") {
-        contextoConversacion = "piedra_del_sol_extendido"; 
+        contextoConversacion = "piedra_del_sol_extendido";
         return "La Piedra del Sol es un monolito olivino de más de 24 toneladas. Representa la concepción del tiempo y las eras de los mexicas.<br>¿Te gustaría profundizar más en su simbología?";
     }
 
     if (contextoConversacion === "piedra_del_sol_extendido") {
         if (diceSi || quiereMasInfo) {
-            contextoConversacion = ""; 
-            return `Para explorar los detalles de sus relieves, ingresa a <a href="https://mna.inah.gob.mx/" target="_blank">mna.inah.gob.mx</a>, revisa la sección "Colecciones" y haz clic en la "Sala Mexica".<br>¿Te puedo ayudar con alguna otra duda?`;
+            contextoConversacion = "";
+            return `Para explorar los detalles de sus relieves, ingresa a <a href="https://mna.inah.gob.mx/" target="_blank">mna.inah.gob.mx</a>, revisa la sección "Colecciones" and haz clic en la "Sala Mexica".<br>¿Te puedo ayudar con alguna otra duda?`;
         }
         if (diceNo || diceOk) {
-            contextoConversacion = ""; 
+            contextoConversacion = "";
             return "¡Entendido! Podemos revisar otra cosa.<br>¿Te gustaría conocer los horarios, cómo llegar o prefieres buscar otra sala?";
         }
     }
 
     if (quiereSaberComoLlegar && (contextoConversacion === "piedra_del_sol" || contextoConversacion === "piedra_del_sol_extendido")) {
-        contextoConversacion = ""; 
+        contextoConversacion = "";
         return "La Sala Mexica se ubica en la planta baja, al fondo del patio central, justo detrás del paraguas. No tiene pierde.<br>¿Quieres consultar algo más?";
     }
 
@@ -137,13 +154,8 @@ function obtenerRespuesta(texto) {
 
     // 10. SALAS ESPECÍFICAS
     if (texto.includes("mexica") || texto.includes("piedra del sol") || texto.includes("sol")) {
-        contextoConversacion = "piedra_del_sol"; 
+        contextoConversacion = "piedra_del_sol";
         return "La Sala Mexica alberga piezas emblemáticas como la Piedra del Sol.<br>¿Te gustaría saber cómo llegar a esta sala o prefieres conocer más de la pieza?";
-    }
-
-    if (texto.includes("maya")) {
-        contextoConversacion = "sala_maya";
-        return "La Sala Maya presenta estelas y objetos de Palenque y Bonampak.<br>¿Te gustaría saber su ubicación en el primer piso?";
     }
 
     // 11. ACCESIBILIDAD
@@ -185,10 +197,31 @@ function obtenerRespuesta(texto) {
     return "No estoy segura de eso, pero puedo ayudarte con información del museo, sus servicios, salas o cómo llegar. Pregúntame lo que quieras 😊";
 }
 
-// --- ACTIVAR ENTER PARA ENVIAR ---
-document.getElementById("userInput").addEventListener("keydown", function(e) {
+// --- ACTIVAR ENTER E INTRO MÓVIL PARA ENVIAR ---
+document.getElementById("userInput").addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
-        e.preventDefault(); 
+        e.preventDefault();
         enviar();
     }
+});
+// --- FUNCIÓN PARA DESVANECER LA PANTALLA DE INICIO ---
+function iniciarChat() {
+    const pantallaBienvenida = document.getElementById("chat-welcome");
+    if (pantallaBienvenida) {
+        pantallaBienvenida.classList.add("fade-out");
+    }
+}
+
+// --- MENSAJE DE BIENVENIDA AUTOMÁTICO AL CARGAR LA PÁGINA ---
+window.addEventListener("DOMContentLoaded", () => {
+    // Reiniciamos el contexto por seguridad
+    contextoConversacion = "";
+
+    // El saludo inicial con saltos de línea atractivos
+    const saludoInicial = "¡Hola, soy Tlaia! Tu guía personalizado.<br><br>¿Es tu primera vez en el MNA o buscas alguna sala o servicio específico? 😊";
+
+    // Forzamos un micro retraso de 300ms para que se sienta natural y no de golpe
+    setTimeout(() => {
+        mostrarMensaje(saludoInicial, "bot");
+    }, 300);
 });

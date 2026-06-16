@@ -22,7 +22,7 @@ const translations = {
       investigar_titulo: 'Investigar',
       investigar_parrafo: 'Llevo a cabo investigaciones rigurosas para comprender a fondo los temas, reunir datos relevantes y descubrir perspectivas que enriquecen el contenido con precisión y profundidad.',
       crear_titulo: 'Crear',
-      crear_parrafo: 'Transformo ideas complejas en mensajes accesibles y comprensibles, equilibrando exactitud técnica con fluidez para una lectura agradable.',
+      crear_parrafo: 'Transformo ideas complexes en mensajes accesibles y comprensibles, equilibrando exactitud técnica con fluidez para una lectura agradable.',
       comunicar_titulo: 'Comunicar',
       comunicar_parrafo: 'Me enfoco en conectar con el lector mediante un estilo directo y envolvente, adaptando el tono y el formato para que la información resulte interesante y significativa.',
       // SECCIÓN CONTACTO
@@ -37,7 +37,14 @@ const translations = {
       boton_enviar: 'Enviar mensaje',
       // Dropdown portafolio
       estudio_caso: 'Estudio de caso',
-      historia_meso: 'Historia de Mesoamérica'
+      historia_meso: 'Historia de Mesoamérica',
+
+      // NUEVA SECCIÓN: TEXTO EXPLICATIVO CHATBOT TLAIA
+      tlaia_titulo: 'Tlaia: Asistente Conversacional',
+      tlaia_parrafo1: 'Como propuesta de solución derivada del estudio de caso de la app del MNA, diseñé a <strong>Tlaia</strong>: un chatbot enfocado en guiar la experiencia del usuario desde su llegada al museo.',
+      tlaia_parrafo2: 'A través de una arquitectura de información simplificada y un tono cercano, este asistente resuelve dudas de accesibilidad, servicios logísticos y propone recorridos personalizados según el tiempo disponible de las personas, mitigando la sobrecarga cognitiva identificada en la investigación.',
+      tlaia_idioma_nota: '*Nota: Por el momento, la demo de este asistente interactivo se encuentra disponible únicamente en español.',
+      tlaia_boton: 'Ver estudio de caso completo'
   },
   en: {
       // NAV BAR
@@ -77,7 +84,14 @@ const translations = {
       boton_enviar: 'Send message',
       // Dropdown portafolio
       estudio_caso: 'Case Study',
-      historia_meso: 'History of Mesoamerica'
+      historia_meso: 'History of Mesoamerica',
+
+      // NUEVA SECCIÓN: TEXTO EXPLICATIVO CHATBOT TLAIA (VERSION EN INGLÉS)
+      tlaia_titulo: 'Tlaia: Conversational Assistant',
+      tlaia_parrafo1: 'As a solution proposed from the MNA app case study, I designed <strong>Tlaia</strong>: a chatbot focused on guiding the user experience from the moment they arrive at the museum.',
+      tlaia_parrafo2: 'Through a simplified information architecture and an approachable tone, this assistant resolves accessibility doubts, logistics services, and proposes personalized tours based on the users\' available time, mitigating the cognitive overload identified in the research.',
+      tlaia_idioma_nota: '*Note: For the time being, this interactive assistant demo is only available in Spanish.',
+      tlaia_boton: 'View full case study'
   }
 };
 
@@ -103,7 +117,7 @@ function setLanguage(lang) {
       }
   });
 
-  if (langEsButton && langEnButton) { // Solo si existen los botones de bandera
+  if (langEsButton && langEnButton) {
       if (lang === 'es') {
           langEsButton.classList.add('active-lang');
           langEnButton.classList.remove('active-lang');
@@ -114,22 +128,18 @@ function setLanguage(lang) {
   }
 }
 
-// Escuchar el clic de los botones de idioma
+// Escuchar el clic de los botones de idioma (Versión directa anti-bloqueos)
 if (langEsButton && langEnButton) {
   langEsButton.addEventListener('click', (event) => {
       event.preventDefault();
-      if (currentLang !== 'es') {
-          localStorage.setItem('lang', 'es');
-          location.reload(); 
-      }
+      localStorage.setItem('lang', 'es');
+      location.reload(); 
   });
 
   langEnButton.addEventListener('click', (event) => {
       event.preventDefault();
-      if (currentLang !== 'en') {
-          localStorage.setItem('lang', 'en');
-          location.reload();
-      }
+      localStorage.setItem('lang', 'en');
+      location.reload();
   });
 }
 
@@ -152,24 +162,28 @@ animElements.forEach(el => observer.observe(el));
 emailjs.init({ publicKey: "SvKgDzMm89Q8tMCPG" });
 })();
 
-document.getElementById("contact-form").addEventListener("submit", function (event) {
-event.preventDefault();
+// Validación por si el formulario no se encuentra en la página actual
+const contactoForm = document.getElementById("contact-form");
+if (contactoForm) {
+  contactoForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-const parms = {
-  from_name: document.getElementById("nombre").value,
-  email_id: document.getElementById("email").value,
-  message: document.getElementById("mensaje").value,
-};
+    const parms = {
+      from_name: document.getElementById("nombre").value,
+      email_id: document.getElementById("email").value,
+      message: document.getElementById("mensaje").value,
+    };
 
-emailjs.send("service_6kogqnj", "template_ioyg4kp", parms)
-  .then(() => {
-    const alertMessage = currentLang === 'es' ? "✅ ¡Tu mensaje fue enviado exitosamente!" : "✅ Your message was sent successfully!";
-    alert(alertMessage);
-    document.getElementById("contact-form").reset();
-  })
-  .catch((error) => {
-    console.error("Error al enviar:", error);
-    const alertMessage = currentLang === 'es' ? "❌ Ocurrió un error al enviar el mensaje. Verifica la consola." : "❌ An error occurred while sending the message. Check the console.";
-    alert(alertMessage);
+    emailjs.send("service_6kogqnj", "template_ioyg4kp", parms)
+      .then(() => {
+        const alertMessage = currentLang === 'es' ? "✅ ¡Tu mensaje fue enviado exitosamente!" : "✅ Your message was sent successfully!";
+        alert(alertMessage);
+        contactoForm.reset();
+      })
+      .catch((error) => {
+        console.error("Error al enviar:", error);
+        const alertMessage = currentLang === 'es' ? "❌ Ocurrió un error al enviar el mensaje. Verifica la consola." : "❌ An error occurred while sending the message. Check the console.";
+        alert(alertMessage);
+      });
   });
-});
+}
