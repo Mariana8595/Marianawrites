@@ -13,24 +13,18 @@ function enviar() {
     setTimeout(() => mostrarMensaje(respuesta, "bot"), 200);
 }
 
-// --- ESTA ES LA FUNCIÓN MODIFICADA CON EL CONTENEDOR PARA LOS AVATARES ---
+// --- CONTENEDOR PARA LOS AVATARES Y MENSAJES ---
 function mostrarMensaje(texto, tipo) {
-    // 1. Creamos el contenedor exterior para el empaquetado del avatar y la burbuja
     const contenedorMensaje = document.createElement("div");
     contenedorMensaje.classList.add("message-row");
 
-    // 2. Creamos la burbuja de texto interna con sus clases correspondientes
     const divBurbuja = document.createElement("div");
     divBurbuja.classList.add("msg", tipo);
     divBurbuja.innerHTML = texto;
 
-    // 3. Metemos la burbuja dentro del contenedor exterior
     contenedorMensaje.appendChild(divBurbuja);
-
-    // 4. Añadimos todo el bloque al área de mensajes de la pantalla
     document.getElementById("messages").appendChild(contenedorMensaje);
 
-    // 5. Ajustamos el scroll automático para enfocar el último texto
     const cont = document.getElementById("messages");
     cont.scrollTop = cont.scrollHeight;
 }
@@ -47,20 +41,18 @@ function obtenerRespuesta(texto) {
     const quiereSaberComoLlegar = texto.includes("cómo llegar") || texto.includes("como llegar") || texto.includes("donde esta") || texto.includes("dónde está") || texto.includes("ubicación") || texto.includes("ubicacion");
     const esPrimeraVez = texto.includes("primera vez") || texto.includes("no conozco") || texto.includes("primer vez");
 
-    // 1. SALUDOS (Actualizado con variantes informales y multiculturales)
+    // 1. SALUDOS (Corregido para romper el bucle infinito)
     const saludos = [
         "hola", "buenas", "qué tal", "que tal", "ola", "oli", "hi",
         "que onda", "qué onda", "holi", "holi crayoli",
         "hello", "hello!", "bonjour", "bonjour!", "que pedo", "qué pedo"
     ];
 
-    // Validamos coincidencia exacta o si la frase contiene el saludo de forma aislada
     if (saludos.some(s => texto === s || texto.startsWith(s + " ") || texto.endsWith(" " + s) || texto.includes(" " + s + " "))) {
-        contextoConversacion = "";
-        return "¡Hola, soy Tlaia! Tu guía personalizado.<br>¿Es tu primera vez en el MNA o buscas algo específico?";
+        return "¡Hola de nuevo! Platícame, ¿en qué te puedo ayudar hoy respecto a tu visita al museo? 😊";
     }
 
-    // 2. DESPEDIDAS DIRECTAS (Si el usuario se va en cualquier momento)
+    // 2. DESPEDIDAS DIRECTAS
     const despedidas = ["adiós", "adios", "bye", "hasta luego", "nos vemos", "me voy"];
     if (despedidas.some(d => texto.includes(d))) {
         contextoConversacion = "";
@@ -105,7 +97,7 @@ function obtenerRespuesta(texto) {
         }
     }
 
-    // 5. MANEJO DE CONTEXTO: PIEDRA DEL SOL (ESTADOS SECUENCIALES)
+    // 5. MANEJO DE CONTEXTO: PIEDRA DEL SOL
     if (quiereMasInfo && contextoConversacion === "piedra_del_sol") {
         contextoConversacion = "piedra_del_sol_extendido";
         return "La Piedra del Sol es un monolito olivino de más de 24 toneladas. Representa la concepción del tiempo y las eras de los mexicas.<br>¿Te gustaría profundizar más en su simbología?";
@@ -114,7 +106,7 @@ function obtenerRespuesta(texto) {
     if (contextoConversacion === "piedra_del_sol_extendido") {
         if (diceSi || quiereMasInfo) {
             contextoConversacion = "";
-            return `Para explorar los detalles de sus relieves, ingresa a <a href="https://mna.inah.gob.mx/" target="_blank">mna.inah.gob.mx</a>, revisa la sección "Colecciones" and haz clic en la "Sala Mexica".<br>¿Te puedo ayudar con alguna otra duda?`;
+            return `Para explorar los detalles de sus relieves, ingresa a <a href="https://mna.inah.gob.mx/" target="_blank">mna.inah.gob.mx</a>, revisa la sección "Colecciones" y haz clic en la "Sala Mexica".<br>¿Te puedo ayudar con alguna otra duda?`;
         }
         if (diceNo || diceOk) {
             contextoConversacion = "";
@@ -204,6 +196,7 @@ document.getElementById("userInput").addEventListener("keydown", function (e) {
         enviar();
     }
 });
+
 // --- FUNCIÓN PARA DESVANECER LA PANTALLA DE INICIO ---
 function iniciarChat() {
     const pantallaBienvenida = document.getElementById("chat-welcome");
@@ -214,13 +207,11 @@ function iniciarChat() {
 
 // --- MENSAJE DE BIENVENIDA AUTOMÁTICO AL CARGAR LA PÁGINA ---
 window.addEventListener("DOMContentLoaded", () => {
-    // Reiniciamos el contexto por seguridad
     contextoConversacion = "";
 
-    // El saludo inicial con saltos de línea atractivos
-    const saludoInicial = "¡Hola, soy Tlaia! Tu guía personalizado.<br><br>¿Es tu primera vez en el MNA o buscas alguna sala o servicio específico? 😊";
+    // CORREGIDO: Género unificado a "personalizada" y espacio añadido para legibilidad
+    const saludoInicial = "¡Hola, soy Tlaia! Tu guía personalizada.<br><br>¿Es tu primera vez en el MNA o buscas alguna sala o servicio específico? 😊";
 
-    // Forzamos un micro retraso de 300ms para que se sienta natural y no de golpe
     setTimeout(() => {
         mostrarMensaje(saludoInicial, "bot");
     }, 300);
