@@ -40,3 +40,6 @@ Para visualizar y realizar pruebas locales sobre este repositorio:
 1. Clona este proyecto de forma local:
    ```bash
    git clone [https://github.com/Mariana8595/Portfolio_3.git](https://github.com/Mariana8595/Portfolio_3.git)
+2. Abre la carpeta del proyecto en tu entorno de desarrollo (Visual Studio Code).
+3. Ejecuta el servidor local mediante la extensión Live Server para desplegar el sitio en tu navegador.
+4. Para realizar pruebas en entornos responsivos (móviles), accede a través de la dirección IP local asignada por tu red (ej. http://192.168.1.73:5500/index.html).
