@@ -43,3 +43,17 @@ Para visualizar y realizar pruebas locales sobre este repositorio:
 2. Abre la carpeta del proyecto en tu entorno de desarrollo (Visual Studio Code).
 3. Ejecuta el servidor local mediante la extensión Live Server para desplegar el sitio en tu navegador.
 4. Para realizar pruebas en entornos responsivos (móviles), accede a través de la dirección IP local asignada por tu red (ej. http://192.168.1.73:5500/index.html).
+
+---
+
+## ⏳ Historial de Desarrollo (Changelog)
+
+Registro del proceso de construcción, optimización y mantenimiento del proyecto:
+
+* **Junio 2026:** Corrección de desbordamiento responsivo en el contador de visitas para dispositivos móviles, unificación de lógica en scripts globales y reestructuración del marcado HTML en la sección de competencias (Expertise) para corregir la alineación de iconos.
+
+* **Febrero 2026:** Integración inicial de la arquitectura lógica y flujos conversacionales de la demo Tlaia para la guía interactiva del museo.
+
+* **Septiembre 2025:** Implementación de la optimización SEO en etiquetas meta y desarrollo de la estructura base para el soporte bilingüe (Diccionario ESP/ENG).
+
+* **Junio 2025:** Carga de activos de identidad visual y maquetación de la primera versión funcional de la interfaz del portafolio.
